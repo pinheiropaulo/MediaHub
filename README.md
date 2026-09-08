@@ -1,18 +1,80 @@
-# MediaHub
+# Media Hub
 
-Aplicativo pessoal multiplataforma (Mobile e Web) para centralizar e organizar conteúdos de entretenimento: filmes, séries, animes e jogos[cite: 4].
+Aplicativo pessoal para descobrir, organizar e acompanhar filmes, séries e animes em uma única biblioteca.
 
-## Visão Geral
-O projeto consolida dados de múltiplas fontes externas em uma única biblioteca pessoal[cite: 4]. O foco é separar o que é "catálogo público" do que é a "relação do usuário com o conteúdo", permitindo o acompanhamento de progresso, registro de notas e gerenciamento de status de consumo (Planejado, Assistindo/Jogando, Pausado, Concluído, Abandonado)[cite: 4].
+O MVP é desenvolvido em Flutter para Android, com interface em PT-BR. TMDB fornece filmes e séries, AniList fornece animes e Supabase gerencia autenticação e dados pessoais.
 
-## Tecnologias Principais
-* **Frontend:** Flutter, Riverpod (Estado), GoRouter (Navegação)[cite: 4].
-* **Backend:** Supabase (PostgreSQL, Autenticação, Edge Functions)[cite: 4].
-* **Integração e Rede:** Dio (HTTP), APIs REST (TMDB, Steam) e GraphQL (AniList)[cite: 4].
+## Objetivo do MVP
 
-## Documentação de Engenharia (`docs/`)
-A lógica de negócios e as regras de integração foram desacopladas. Consulte os documentos abaixo para especificações arquiteturais:
+- Criar e acessar uma conta.
+- Descobrir e buscar filmes, séries e animes.
+- Adicionar conteúdos à biblioteca pessoal.
+- Acompanhar situação, temporadas e episódios.
+- Consultar estatísticas e preferências básicas.
 
-* **[Arquitetura e Padrões](docs/ARCHITECTURE.md):** Diretrizes de estruturação Feature-first, Clean Architecture, injeção de dependências e organização de componentes[cite: 4].
-* **[Fontes de Dados (APIs)](docs/DATA_SOURCES.md):** Regras de integração, mapeamento de domínios e consumo da Steam Web API, TMDB e AniList[cite: 4].
-* **[Esquema de Banco de Dados](docs/DATABASE_SCHEMA.md):** Estrutura das tabelas principais (`media`, `user_media`, `media_progress`) e persistência no Supabase[cite: 4].
+Jogos e integração com Steam estão planejados somente para uma etapa futura.
+
+Consulte o [escopo completo do MVP](docs/product/mvp-scope.md).
+
+## Stack
+
+- Flutter e Dart.
+- Material 3.
+- Riverpod.
+- `go_router`.
+- Dio.
+- Supabase.
+- TMDB e AniList GraphQL.
+
+## Executar localmente
+
+```sh
+flutter pub get
+flutter analyze
+flutter test
+flutter run
+```
+
+Veja [Preparação do ambiente](docs/development/getting-started.md). Credenciais reais e segredos não devem ser versionados.
+
+## Arquitetura
+
+O projeto adota organização feature-first com separação pragmática entre apresentação, domínio e dados:
+
+```text
+View -> Provider/ViewModel -> domínio <- repository <- data source
+```
+
+- [Visão geral](docs/architecture/overview.md)
+- [Estrutura de pastas](docs/architecture/folder-structure.md)
+- [Navegação](docs/architecture/navigation.md)
+
+## Documentação
+
+O índice completo está em [docs/README.md](docs/README.md).
+
+- [Produto e escopo](docs/product/mvp-scope.md)
+- [Regras de negócio](docs/product/business-rules.md)
+- [Modelo de dados](docs/backend/database.md)
+- [Fontes de dados](docs/backend/data-sources.md)
+- [Design System](docs/design/design-system.md)
+- [Inventário de telas](docs/design/screen-inventory.md)
+- [Roadmap](docs/product/roadmap.md)
+- [Como desenvolver](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
+
+## Estado atual
+
+- [x] Projeto Flutter criado.
+- [x] Escopo e Design System definidos.
+- [x] Documentação modular criada.
+- [x] Login e Início mobile consolidados.
+- [x] Riverpod e router iniciais configurados.
+- [ ] Estrutura feature-first final.
+- [ ] Navegação completa.
+- [ ] Integração com Supabase, TMDB e AniList.
+- [ ] Funcionalidades e testes do MVP.
+
+## Uso
+
+Projeto pessoal e privado.
